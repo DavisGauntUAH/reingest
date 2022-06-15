@@ -4,41 +4,41 @@
         "execution_name": "<collection_name>-<filename>",
         "message_source": "sfn",
         "queueExecutionLimits": {
-            "https://sqs.us-west-2.amazonaws.com/847515606907/ghrcsit-backgroundJobQueue": 900,
-            "https://sqs.us-west-2.amazonaws.com/847515606907/ghrcsit-backgroundProcessing": 5,
-            "https://sqs.us-west-2.amazonaws.com/847515606907/ghrcsit-near-real-time": 900,
-            "https://sqs.us-west-2.amazonaws.com/847515606907/ghrcsit-ongoing": 900
+            "https://sqs.us-west-2.amazonaws.com/349778025075/ghrcw-backgroundJobQueue": 900,
+            "https://sqs.us-west-2.amazonaws.com/349778025075/ghrcw-backgroundProcessing": 5,
+            "https://sqs.us-west-2.amazonaws.com/349778025075/ghrcw-near-real-time": 900,
+            "https://sqs.us-west-2.amazonaws.com/349778025075/ghrcw-ongoing": 900
         },
-        "state_machine": "arn:aws:states:us-west-2:847515606907:stateMachine:ghrcsit-IngestGranule",
-        "system_bucket": "ghrcsit-internal",
+        "state_machine": "arn:aws:states:us-west-2:349778025075:stateMachine:ghrcw-IngestGranule",
+        "system_bucket": "ghrcw-internal",
         "workflow_start_time": null,
-        "parentExecutionArn": "arn:aws:states:us-west-2:847515606907:execution:ghrcsit-DiscoverGranules:phipsimpacts-15c329bf-8863-43fb-acf9-2a86dbd57c82"
+        "parentExecutionArn": "arn:aws:states:us-west-2:349778025075:execution:ghrcw-DiscoverGranules:isslis_v2_nrt-947ed5cb-0d37-4846-83e9-97d5f85c6e3a"
     },
     "exception": null,
     "meta": {
         "buckets": {
             "dashboard": {
-                "name": "ghrcsit-dashboard",
+                "name": "ghrcw-dashboard",
                 "type": "public"
             },
             "internal": {
-                "name": "ghrcsit-internal",
+                "name": "ghrcw-internal",
                 "type": "internal"
             },
             "orca_default": {
-                "name": "sit-orca-glacier-archive",
+                "name": "prod-orca-glacier-archive",
                 "type": "orca"
             },
             "private": {
-                "name": "ghrcsit-private",
+                "name": "ghrcw-private",
                 "type": "private"
             },
             "protected": {
-                "name": "ghrcsit-protected",
+                "name": "ghrcw-protected",
                 "type": "protected"
             },
             "public": {
-                "name": "ghrcsit-public",
+                "name": "ghrcw-public",
                 "type": "public"
             },
             "sharedprivate": {
@@ -47,93 +47,89 @@
             }
         },
         "cmr": {
-            "clientId": "ghrc_cdev",
-            "cmrEnvironment": "UAT",
+            "clientId": "ghrc_daac",
+            "cmrEnvironment": "OPS",
             "cmrLimit": 100,
             "cmrPageSize": 50,
             "oauthProvider": "launchpad",
-            "passwordSecretName": "ghrcsit-message-template-cmr-password20200226161551303900000002",
-            "provider": "GHRC_CDEV",
-            "username": "ghrc_cdev"
+            "passwordSecretName": "ghrcw-message-template-cmr-password20200309200329692700000005",
+            "provider": "GHRC_DAAC",
+            "username": "ghrc_daac"
         },
         "collection": {
-            "name": "phipsimpacts",
-            "version": "1",
-            "process": "metadataextractor",
-            "url_path": "phipsimpacts__1",
-            "duplicateHandling": "replace",
-            "granuleId": "^IMPACTS_PHIPS_.*\\.(png)$",
-            "granuleIdExtraction": "^((IMPACTS_PHIPS_).*)",
-            "reportToEms": true,
-            "sampleFileName": "IMPACTS_PHIPS_20200201_1109_20200201113854_000006_C2.png",
-            "files": [
-                {
-                    "bucket": "public",
-                    "regex": "^IMPACTS_PHIPS_(.*).*\\.cmr.(xml|json)$",
-                    "sampleFileName": "IMPACTS_PHIPS_20200201_1109_20200201113854_000006_C2.png.cmr.xml"
-                },
-                {
-                    "bucket": "protected",
-                    "regex": "^IMPACTS_PHIPS_(.*).*(png)$",
-                    "sampleFileName": "IMPACTS_PHIPS_20200201_1109_20200201113854_000006_C2.png"
-                }
-            ],
-            "updatedAt": 1655133157026,
-            "meta": {
-                "discover_tf": {
-                    "depth": 0,
-                    "dir_reg_ex": ".*"
-                },
-                "hyrax_processing": "false",
-                "provider_path": "phipsimpacts/fieldCampaigns/impacts/PHIPS/browse/Flight_200225/Flight_200225_processed_full_images_C1",
-                "metadata_extractor": [
-                    {
-                        "regex": "^IMPACTS_PHIPS_.*\\.(png)$",
-                        "module": "browse"
-                    }
-                ]
+         "name":"gpmkdmx2ifld",
+         "version":"1",
+         "dataType":"gpmkdmx2ifld",
+         "process":"metadataextractor",
+         "url_path":"gpmkdmx2ifld__1",
+         "duplicateHandling":"replace",
+         "granuleId":"^Level2_KDMX_.*\\.(ar2v)$",
+         "granuleIdExtraction":"^((Level2_KDMX_).*)",
+         "reportToEms":true,
+         "sampleFileName":"Level2_KDMX_20130618_0148.ar2v",
+         "meta":{
+            "provider_path":"gpmkdmx2ifld/fieldCampaigns/gpmValidation/ifloods/NEXRAD2/KDMX/data/",
+            "hyrax_processing":"false",
+            "large_dataset": "true",
+            "metadata_extractor":[
+               {
+                  "regex":"^Level2_KDMX_(.*).*\\.(ar2v)$",
+                  "module":"netcdf"
+               }
+            ]
+         },
+         "files":[
+            {
+               "bucket":"public",
+               "regex":"^Level2_KDMX_(.*).*\\.cmr.(xml|json)$",
+               "sampleFileName":"Level2_KDMX_20130618_0148.ar2v.cmr.xml"
             },
-            "createdAt": 1605893702681
-        },
-        "distribution_endpoint": "https://6lb1jboxz5.execute-api.us-west-2.amazonaws.com:7000/sit/",
+            {
+               "bucket":"protected",
+               "regex":"^Level2_KDMX_(.*).*(ar2v)$",
+               "sampleFileName":"Level2_KDMX_20130618_0148.ar2v"
+            }
+         ]
+      },
+        "distribution_endpoint": "https://data.ghrc.earthdata.nasa.gov/",
         "launchpad": {
             "api": "https://api.launchpad.nasa.gov/icam/api/sm/v1",
             "certificate": "launchpad.pfx",
-            "passphraseSecretName": "ghrcsit-message-template-launchpad-passphrase2020022616155629450000000c"
+            "passphraseSecretName": "ghrcw-message-template-launchpad-passphrase20200309200328262000000001"
         },
         "provider": {
-            "id": "prod_private_bucket",
+            "id": "private_bucket",
             "globalConnectionLimit": 900,
             "host": "ghrcw-private",
             "protocol": "s3",
-            "createdAt": 1635881909158,
-            "updatedAt": 1642623491226
+            "createdAt": 1592857271267,
+            "updatedAt": 1592857271267
         },
-        "stack": "ghrcsit",
-        "template": "s3://ghrcsit-internal/ghrcsit/workflow_template.json",
+        "stack": "ghrcw",
+        "template": "s3://ghrcw-internal/ghrcw/workflow_template.json",
         "workflow_name": "IngestGranule",
         "workflow_tasks": {}
     },
     "payload": {
         "granules": [
             {
-                "granuleId": "IMPACTS_PHIPS_20200225_2039_20200225205851_000001_C1.png",
-                "dataType": "phipsimpacts",
+                "granuleId": "<filename>",
+                "dataType": "<collection_name>",
                 "version": "1",
                 "files": [
                     {
-                        "bucket": "ghrcsit-protected",
+                        "bucket": "ghrcw-protected",
                         "checksum": "",
                         "checksumType": "",
-                        "filename": "s3://ghrcw-private/phipsimpacts/fieldCampaigns/impacts/PHIPS/browse/Flight_200225/Flight_200225_processed_full_images_C1/IMPACTS_PHIPS_20200225_2039_20200225205851_000001_C1.png",
-                        "name": "IMPACTS_PHIPS_20200225_2039_20200225205851_000001_C1.png",
-                        "path": "phipsimpacts/fieldCampaigns/impacts/PHIPS/browse/Flight_200225/Flight_200225_processed_full_images_C1",
-                        "size": 456744,
-                        "time": "1607151876.0",
+                        "filename": "<s3URI>",
+                        "name": "<filename>",
+                        "path": "<S3prefix>",
+                        "size": <size>,
+                        "time": "<epoch_now>",
                         "type": ""
                     }
                 ],
-                "createdAt": 1655133274182
+                "createdAt": epoch_now
             }
         ]
     }
