@@ -1,0 +1,140 @@
+{
+    "cumulus_meta": {
+        "cumulus_version": "11.1.1",
+        "execution_name": "<collection_name>-<filename>",
+        "message_source": "sfn",
+        "queueExecutionLimits": {
+            "https://sqs.us-west-2.amazonaws.com/847515606907/ghrcsit-backgroundJobQueue": 900,
+            "https://sqs.us-west-2.amazonaws.com/847515606907/ghrcsit-backgroundProcessing": 5,
+            "https://sqs.us-west-2.amazonaws.com/847515606907/ghrcsit-near-real-time": 900,
+            "https://sqs.us-west-2.amazonaws.com/847515606907/ghrcsit-ongoing": 900
+        },
+        "state_machine": "arn:aws:states:us-west-2:847515606907:stateMachine:ghrcsit-IngestGranule",
+        "system_bucket": "ghrcsit-internal",
+        "workflow_start_time": null,
+        "parentExecutionArn": "arn:aws:states:us-west-2:847515606907:execution:ghrcsit-DiscoverGranules:phipsimpacts-15c329bf-8863-43fb-acf9-2a86dbd57c82"
+    },
+    "exception": null,
+    "meta": {
+        "buckets": {
+            "dashboard": {
+                "name": "ghrcsit-dashboard",
+                "type": "public"
+            },
+            "internal": {
+                "name": "ghrcsit-internal",
+                "type": "internal"
+            },
+            "orca_default": {
+                "name": "sit-orca-glacier-archive",
+                "type": "orca"
+            },
+            "private": {
+                "name": "ghrcsit-private",
+                "type": "private"
+            },
+            "protected": {
+                "name": "ghrcsit-protected",
+                "type": "protected"
+            },
+            "public": {
+                "name": "ghrcsit-public",
+                "type": "public"
+            },
+            "sharedprivate": {
+                "name": "ghrcw-private",
+                "type": "sharedprivate"
+            }
+        },
+        "cmr": {
+            "clientId": "ghrc_cdev",
+            "cmrEnvironment": "UAT",
+            "cmrLimit": 100,
+            "cmrPageSize": 50,
+            "oauthProvider": "launchpad",
+            "passwordSecretName": "ghrcsit-message-template-cmr-password20200226161551303900000002",
+            "provider": "GHRC_CDEV",
+            "username": "ghrc_cdev"
+        },
+        "collection": {
+            "name": "phipsimpacts",
+            "version": "1",
+            "process": "metadataextractor",
+            "url_path": "phipsimpacts__1",
+            "duplicateHandling": "replace",
+            "granuleId": "^IMPACTS_PHIPS_.*\\.(png)$",
+            "granuleIdExtraction": "^((IMPACTS_PHIPS_).*)",
+            "reportToEms": true,
+            "sampleFileName": "IMPACTS_PHIPS_20200201_1109_20200201113854_000006_C2.png",
+            "files": [
+                {
+                    "bucket": "public",
+                    "regex": "^IMPACTS_PHIPS_(.*).*\\.cmr.(xml|json)$",
+                    "sampleFileName": "IMPACTS_PHIPS_20200201_1109_20200201113854_000006_C2.png.cmr.xml"
+                },
+                {
+                    "bucket": "protected",
+                    "regex": "^IMPACTS_PHIPS_(.*).*(png)$",
+                    "sampleFileName": "IMPACTS_PHIPS_20200201_1109_20200201113854_000006_C2.png"
+                }
+            ],
+            "updatedAt": 1655133157026,
+            "meta": {
+                "discover_tf": {
+                    "depth": 0,
+                    "dir_reg_ex": ".*"
+                },
+                "hyrax_processing": "false",
+                "provider_path": "phipsimpacts/fieldCampaigns/impacts/PHIPS/browse/Flight_200225/Flight_200225_processed_full_images_C1",
+                "metadata_extractor": [
+                    {
+                        "regex": "^IMPACTS_PHIPS_.*\\.(png)$",
+                        "module": "browse"
+                    }
+                ]
+            },
+            "createdAt": 1605893702681
+        },
+        "distribution_endpoint": "https://6lb1jboxz5.execute-api.us-west-2.amazonaws.com:7000/sit/",
+        "launchpad": {
+            "api": "https://api.launchpad.nasa.gov/icam/api/sm/v1",
+            "certificate": "launchpad.pfx",
+            "passphraseSecretName": "ghrcsit-message-template-launchpad-passphrase2020022616155629450000000c"
+        },
+        "provider": {
+            "id": "prod_private_bucket",
+            "globalConnectionLimit": 900,
+            "host": "ghrcw-private",
+            "protocol": "s3",
+            "createdAt": 1635881909158,
+            "updatedAt": 1642623491226
+        },
+        "stack": "ghrcsit",
+        "template": "s3://ghrcsit-internal/ghrcsit/workflow_template.json",
+        "workflow_name": "IngestGranule",
+        "workflow_tasks": {}
+    },
+    "payload": {
+        "granules": [
+            {
+                "granuleId": "IMPACTS_PHIPS_20200225_2039_20200225205851_000001_C1.png",
+                "dataType": "phipsimpacts",
+                "version": "1",
+                "files": [
+                    {
+                        "bucket": "ghrcsit-protected",
+                        "checksum": "",
+                        "checksumType": "",
+                        "filename": "s3://ghrcw-private/phipsimpacts/fieldCampaigns/impacts/PHIPS/browse/Flight_200225/Flight_200225_processed_full_images_C1/IMPACTS_PHIPS_20200225_2039_20200225205851_000001_C1.png",
+                        "name": "IMPACTS_PHIPS_20200225_2039_20200225205851_000001_C1.png",
+                        "path": "phipsimpacts/fieldCampaigns/impacts/PHIPS/browse/Flight_200225/Flight_200225_processed_full_images_C1",
+                        "size": 456744,
+                        "time": "1607151876.0",
+                        "type": ""
+                    }
+                ],
+                "createdAt": 1655133274182
+            }
+        ]
+    }
+}
