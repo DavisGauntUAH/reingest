@@ -124,12 +124,12 @@
                         "filename": "<s3URI>",
                         "name": "<filename>",
                         "path": "<S3prefix>",
-                        "size": <size>,
+                        "size": "<size>",
                         "time": "<epoch_now>",
                         "type": ""
                     }
                 ],
-                "createdAt": epoch_now
+                "createdAt": "epoch_now"
             }
         ]
     }
