@@ -1,4 +1,3 @@
-from fileinput import filename
 import json
 import os
 import time
@@ -17,7 +16,7 @@ def generate_payload(s3_uri, collection, size):
     filename = os.path.basename(s3_uri)
     parsed_uri = urlparse(s3_uri)
     bucket = parsed_uri.netloc
-    path = parsed_uri.path[1:]   
+    path = parsed_uri.path[1:len(parsed_uri.path)-len(filename)-1]
     payload = { "cumulu_meta": 
         {
             "cumulus_version": "11.1.1",
@@ -144,12 +143,12 @@ def generate_payload(s3_uri, collection, size):
                             "filename": s3_uri,
                             "name": filename,
                             "path": path,
-                            "size": size,
-                            "time": f"{int(time.time())}.0",
+                            "size": int(size),
+                            "time": "1655328855.0",
                             "type": ""
                         }
                     ],
-                    "createdAt": int(time.time())
+                    "createdAt": 1655328929725
                 }
             ]
         }
@@ -163,6 +162,21 @@ def send_to_sqs(payload, sqs_name):
     resp = sqs.create_queue(QueueName=sqs_name)
     que_url = resp["QueueUrl"]
     sqs.send_message(QueueUrl=que_url, MessageBody=json.dumps(payload))
+    
+    resp = sqs.receive_message(QueueUrl=que_url, MaxNumberOfMessages=1)
+    
+    for message in resp.get("Messages", []):
+        message_body = message["Body"]
+        print(f"{message_body}\n\n")
+        
+        
+def start_execution(payload):
+    
+    sfn_client = boto3.client('stepfunctions')
+    resoponse = sfn_client.start_execution(
+        stateMachineArn="arn:aws:states:us-west-2:349778025075:stateMachine:ghrcw-IngestGranule",
+        input= f"""{payload}""")
+    print(resoponse)
 
 
 def reingest(csv_path, collection, sqs_name):
@@ -175,7 +189,8 @@ def reingest(csv_path, collection, sqs_name):
             p_line = line.split(',')
             s3_uri, size = p_line[0], p_line[1]
             payload = generate_payload(s3_uri, collection, size)
-            send_to_sqs(payload, sqs_name)
+            #send_to_sqs(payload, sqs_name)
+            start_execution(payload)
             
 
 
